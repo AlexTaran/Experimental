@@ -2,4 +2,4 @@
 
 # This is a file with global settings for crawler
 
-DOMAIN = "preps.arptek.ru"
+DOMAIN_NAME = "preps.arptek.ru"
