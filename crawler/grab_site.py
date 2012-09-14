@@ -5,8 +5,6 @@ import os
 import get_preps
 import urllib2
 
-ROOT_DIR_NAME = "PREPS"
-
 def prep_name_from_url(url):
   slash = url.rfind("/")
   dot = url.rfind(".")

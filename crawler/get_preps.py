@@ -4,7 +4,7 @@
 # This file contains code for fetching preps from preps-lists
 
 import urllib2
-import constants
+from constants import *
 import re
 from get_letters import get_letters
 
