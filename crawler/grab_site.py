@@ -15,17 +15,21 @@ def prep_name_from_url(url):
   return url[slash + 1 : dot]
 
 def ensure_dir(path):
-  folder = os.path.dirname(path)
   if not os.path.exists(path):
     os.makedirs(path)
 
 def main():
   ensure_dir(ROOT_DIR_NAME)
+  print "Trying to download list of preps..."
   preps = get_preps.get_preps()
   for prep in preps:
-    print prep_name_from_url(prep)
-    ensure_dir(ROOT_DIR_NAME + "/" + prep_name_from_url(prep))
-  print len(preps)
+    print "Downloading prep: " + prep_name_from_url(prep)
+    prep_folder = prep_name_from_url(prep)
+    ensure_dir(ROOT_DIR_NAME + "/" + prep_folder)
+    page_data = urllib2.urlopen(prep).read()
+    with open(ROOT_DIR_NAME + "/" + prep_folder + "/" + prep_folder + ".html", "w") as f:
+      f.write(page_data)
+  print "Processed " + str(len(preps)) + "preps"
 
 if __name__ == "__main__":
   main()
